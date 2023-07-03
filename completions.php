@@ -23,7 +23,6 @@ if(empty( $request->prompt)){
 if (empty($request->model)){$request->model = "text-davinci-003";}
 
 if (empty($request->temperature)){$request->temperature = 0.7;}
-if (empty($request->max_tokens)){$request->max_tokens =1000;}
     
 $request = (array)$request;
 $client = new Client();
