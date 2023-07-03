@@ -14,11 +14,11 @@ if(empty($request)){
     $request = (object)$_POST;
 }
 if (empty($request->messages) && !empty($request->prompt)){
-    $request->messages = [["role"=> "user", "content"=> $request->prompt]];
+    $request->messages = [(object)["role"=> "user", "content"=> $request->prompt]];
     unset($request->prompt);
 }
 
-if(empty( $request->messages[0]["content"])){
+if(empty( $request->messages[0]->content)){
     echo '{"error":"input error!"}';
     exit;
 }
