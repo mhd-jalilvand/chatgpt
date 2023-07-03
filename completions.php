@@ -10,7 +10,9 @@ $dotenv->load();
 
 $apiKey = $_ENV['OPENAI_API_KEY'];
 $request = json_decode(file_get_contents('php://input'));
-
+if(empty($request)){
+    $request = (object)$_POST;
+}
 if (empty($request->prompt) && !empty($request->messages[0]["content"])){
     $request->prompt = $request->messages[0]["content"];
     unset($request->messages);
