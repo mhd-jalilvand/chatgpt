@@ -17,8 +17,6 @@ $uri = preg_replace('/^.+?index\.php/', '', $uri);
 $uri = ltrim($uri, '/');
 $url = 'https://api.openai.com/'.$uri;
 
-echo $url ;die();
-
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try{
         $response = $client->get($url ,['headers' => [
