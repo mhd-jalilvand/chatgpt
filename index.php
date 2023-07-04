@@ -9,10 +9,15 @@ if(!empty($_SERVER['HTTP_AUTHORIZATION'])){
 }
 $client = new Client();
 $uri = $_SERVER['REQUEST_URI'];
-$uri = str_replace('index.php/', '', $uri);
-$url = 'https://api.openai.com'.$uri;
 
+// Remove the script filename and everything before it
+$uri = preg_replace('/^.+?index\.php/', '', $uri);
 
+// Remove any leading slashes
+$uri = ltrim($uri, '/');
+$url = 'https://api.openai.com/'.$uri;
+
+echo $url ;die();
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     try{
